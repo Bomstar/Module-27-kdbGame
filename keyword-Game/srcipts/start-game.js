@@ -26,3 +26,9 @@ function playAgain() {
   heartValue.innerText = 5;
   dollarValue.innerText = 0;
 }
+
+window.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    startGame();
+  }
+});

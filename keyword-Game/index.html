@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <main
+      class="bg-[#010313] bg-[url(./images/background.png)] bg-center bg-no-repeat min-h-screen text-white"
+    >
+      <!-- home -->
+      <section
+        id="home-ground"
+        class="flex items-center justify-center min-h-screen"
+      >
+        <div class="flex flex-col items-center justify-center space-y-5">
+          <h1 class="text-center font-anton text-9xl uppercase">
+            alphabet clash
+          </h1>
+          <p>Unleash Your Keyboard Kung Fu : Press “Enter” to Play</p>
+          <button
+            onclick="startGame()"
+            class="bg-white rounded-md py-2 px-5 text-black font-semibold"
+          >
+            Play Now
+          </button>
+        </div>
+      </section>
+      <!-- Play Ground -->
+      <section id="play-ground" class="hidden">
+        <div
+          class="flex justify-center items-center flex-col min-h-screen space-y-10"
+        >
+          <div
+            class="w-[760px] h-[250px] bg-[#FFFFFFB2] border-[12px] border-[#010313CC] mt-5"
+          >
+            <div class="flex flex-col items-center gap-5">
+              <p class="bg-[#010313CC] pb-2 px-8 rounded-b-md">
+                Don't watch keyboard while playing...
+              </p>
+              <h1 id="letter" class="text-8xl font-anton font-semibold">X</h1>
+            </div>
+          </div>
+          <div>
+            <div class="my-1 flex w-full justify-center gap-1">
+              <kbd id="w" class="kbd">w</kbd>
+              <kbd id="e" class="kbd">e</kbd>
+              <kbd id="q" class="kbd">q</kbd>
+              <kbd id="r" class="kbd">r</kbd>
+              <kbd id="t" class="kbd">t</kbd>
+              <kbd id="y" class="kbd">y</kbd>
+              <kbd id="u" class="kbd">u</kbd>
+              <kbd id="i" class="kbd">i</kbd>
+              <kbd id="o" class="kbd">o</kbd>
+              <kbd id="p" class="kbd">p</kbd>
+            </div>
+            <div class="my-1 flex w-full justify-center gap-1">
+              <kbd id="a" class="kbd">a</kbd>
+              <kbd id="s" class="kbd">s</kbd>
+              <kbd id="d" class="kbd">d</kbd>
+              <kbd id="f" class="kbd">f</kbd>
+              <kbd id="g" class="kbd">g</kbd>
+              <kbd id="h" class="kbd">h</kbd>
+              <kbd id="j" class="kbd">j</kbd>
+              <kbd id="k" class="kbd">k</kbd>
+              <kbd id="l" class="kbd">l</kbd>
+            </div>
+            <div class="my-1 flex w-full justify-center gap-1">
+              <kbd id="z" class="kbd">z</kbd>
+              <kbd id="x" class="kbd">x</kbd>
+              <kbd id="c" class="kbd">c</kbd>
+              <kbd id="v" class="kbd">v</kbd>
+              <kbd id="b" class="kbd">b</kbd>
+              <kbd id="n" class="kbd">n</kbd>
+              <kbd id="m" class="kbd">m</kbd>
+              <kbd id="/" class="kbd">/</kbd>
+            </div>
+          </div>
+          <div class="flex justify-between w-2/5">
+            <button class="flex gap-2 bg-purple-500 px-4 py-1 rounded-md">
+              Life <img src="./images/heart.svg" alt="" /><span
+                id="heart"
+                type="number"
+                >3</span
+              ></button
+            ><button class="flex gap-2 bg-pink-700 px-4 py-1 rounded-md">
+              Score <img src="./images/doller.svg" alt="" /><span
+                id="dollar"
+                type="number"
+                >0</span
+              >
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- Score -->
+      <section id="game-over" class="hidden">
+        <div class="flex items-center justify-center min-h-screen">
+          <div
+            class="flex flex-col gap-5 items-center p-5 rounded-md bg-[linear-gradient(121deg,rgba(255,255,255,0.56)_0%,rgba(152,151,151,0.00)_102.2%)]"
+          >
+            <h1 class="font-semibold text-3xl">
+              Score : <span id="score">14</span>
+            </h1>
+            <button
+              onclick="playAgain()"
+              class="bg-white text-black rounded-md font-semibold py-2 px-5"
+            >
+              Play Again
+            </button>
+            <p>Practice will make you Pro</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="./srcipts/utiliti/id-and-class-call.js"></script>
+    <script src="./srcipts/utiliti/rendom-alphabet.js"></script>
+    <script src="./srcipts/utiliti/kdb-event.js"></script>
+    <script src="./srcipts/start-game.js"></script>
+  </body>
+</html>

@@ -1,28 +1,29 @@
-const kbdRect = true;
-let kbdRects = kbdRect;
-
 // sstart the game and show the letter in display
 function startGame() {
   hideCurrentPage("home-ground");
   showActualPage("play-ground");
-  const randomAlphabet = getRendomAlphabet();
-  getId("letter").innerText = randomAlphabet;
-  kbdRects = getId("play-ground").classList.contains("hidden");
+  getId("letter").innerText = getRendomAlphabet();
 }
 
 // keyboard event and check the letter
 
 document.addEventListener("keyup", (event) => {
-  if (kbdRects === true) {
+  const key = event.key;
+  if (key === "Enter") {
+    startGame();
+    return;
+  }
+
+  const kbdRects = getId("play-ground").classList.contains("hidden");
+  if (kbdRects) {
     console.log("Please play now Button or Enter key");
     return;
   }
-  const key = event.key;
+
   const letter = getId("letter").innerText;
   if (key === letter) {
     removeBackgroundColor(letter);
-    const randomAlphabet = getRendomAlphabet();
-    getId("letter").innerText = randomAlphabet;
+    getId("letter").innerText = getRendomAlphabet();
     increaseValue("dollar");
   } else {
     const currentScore = decreaseValue("heart");

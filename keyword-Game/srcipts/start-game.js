@@ -1,34 +1,49 @@
+const kbdRect = true;
+let kbdRects = kbdRect;
+
+// sstart the game and show the letter in display
 function startGame() {
-  const HomeGround = getId("home-ground");
-  const playGround = getId("play-ground");
-  const heartValue = getId("heart");
-  const dollarValue = getId("dollar");
-  HomeGround.classList.add("hidden");
-  playGround.classList.remove("hidden");
-  heartValue.innerText = 5;
-  dollarValue.innerText = 0;
-
-  const randomLetter = getRendomAlphabet();
-  const letter = getId("letter");
-  letter.innerText = randomLetter;
-
-  changeBackgroundColor(randomLetter);
-  kdbEvent();
+  hideCurrentPage("home-ground");
+  showActualPage("play-ground");
+  const randomAlphabet = getRendomAlphabet();
+  getId("letter").innerText = randomAlphabet;
+  kbdRects = getId("play-ground").classList.contains("hidden");
 }
 
-function playAgain() {
-  const playGround = getId("play-ground");
-  const gameOver = getId("game-over");
-  playGround.classList.remove("hidden");
-  gameOver.classList.add("hidden");
-  const heartValue = getId("heart");
-  const dollarValue = getId("dollar");
-  heartValue.innerText = 5;
-  dollarValue.innerText = 0;
-}
+// keyboard event and check the letter
 
-window.addEventListener("keyup", (event) => {
-  if (event.key === "Enter") {
-    startGame();
+document.addEventListener("keyup", (event) => {
+  if (kbdRects === true) {
+    console.log("Please play now Button or Enter key");
+    return;
+  }
+  const key = event.key;
+  const letter = getId("letter").innerText;
+  if (key === letter) {
+    removeBackgroundColor(letter);
+    const randomAlphabet = getRendomAlphabet();
+    getId("letter").innerText = randomAlphabet;
+    increaseValue("dollar");
+  } else {
+    const currentScore = decreaseValue("heart");
+    if (currentScore <= 0) {
+      gameOver(letter);
+    }
   }
 });
+
+function gameOver(letter) {
+  hideCurrentPage("play-ground");
+  showActualPage("game-over");
+  getId("score").innerText = getId("dollar").innerText;
+  removeBackgroundColor(letter);
+}
+
+// restart the game
+function restartGame() {
+  hideCurrentPage("game-over");
+  showActualPage("play-ground");
+  getId("dollar").innerText = 0;
+  getId("heart").innerText = 3;
+  startGame();
+}

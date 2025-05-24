@@ -9,6 +9,7 @@ function startGame() {
 
 document.addEventListener("keyup", (event) => {
   const key = event.key;
+  const letter = getId("letter").innerText;
   if (key === "Enter") {
     startGame();
     return;
@@ -20,7 +21,11 @@ document.addEventListener("keyup", (event) => {
     return;
   }
 
-  const letter = getId("letter").innerText;
+  if (key === "Escape") {
+    gameOver(letter);
+    return;
+  }
+
   if (key === letter) {
     removeBackgroundColor(letter);
     getId("letter").innerText = getRendomAlphabet();
